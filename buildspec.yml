@@ -5,12 +5,13 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --no-include-email --region us-east-1)
+      -
   build:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
       - docker build -t diocesan .
-      - docker tag diocesan:latest diocesan:latest 938723298899.dkr.ecr.us-east-1.amazonaws.com/diocesan:latest      
+      - docker tag diocesan:latest 938723298899.dkr.ecr.us-east-1.amazonaws.com/diocesan:latest      
   post_build:
     commands:
       - echo Build completed on `date`
